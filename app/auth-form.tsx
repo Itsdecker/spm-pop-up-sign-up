@@ -1,4 +1,5 @@
 'use client'
+
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
@@ -14,7 +15,7 @@ export default function AuthForm() {
       theme="dark"
       showLinks={false}
       providers={[]}
-      redirectTo={`${location.origin}/auth/callback`}
+      redirectTo={`https://spm-pop-up-sign-up.vercel.app/auth/callback`}
     />
   )
 }
