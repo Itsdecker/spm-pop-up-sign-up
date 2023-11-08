@@ -14,7 +14,7 @@ export default function AuthForm() {
       theme="dark"
       showLinks={false}
       providers={[]}
-      redirectTo="spm-pop-up-sign-up.vercel.app/auth/callback"
+      redirectTo="https://spm-pop-up-sign-up.vercel.app/account"
     />
   )
 }
