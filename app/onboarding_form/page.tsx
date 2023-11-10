@@ -2,6 +2,7 @@
 
 import { supabase } from '@/utils/supabase/client';
 import { NextPage } from 'next';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const OnboardingForm: NextPage = () => {
@@ -34,6 +35,7 @@ const OnboardingForm: NextPage = () => {
     signature: '',
     date: '',
   });
+  const router = useRouter();
 
   // Handle input change
   const handleChange = (e: any) => {
@@ -51,9 +53,9 @@ const OnboardingForm: NextPage = () => {
       .insert([{ ...formValues }]);
 
     if (error) {
-      console.error('There was an error inserting', data);
+      console.error('There was an error inserting', error);
     } else {
-      console.log('Inserted data', data);
+      router.push('/success');
     }
   };
 
