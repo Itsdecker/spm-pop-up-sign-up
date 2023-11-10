@@ -1,10 +1,11 @@
 'use client';
 
+import { supabase } from '@/utils/supabase/client';
 import { NextPage } from 'next';
 import { useState } from 'react';
 
 const OnboardingForm: NextPage = () => {
-  const [formData, setFormData] = useState({
+  const [formValues, setFormValues] = useState({
     dealerName: '',
     dealerAddress: '',
     city: '',
@@ -17,21 +18,44 @@ const OnboardingForm: NextPage = () => {
     websiteCompanyContact: '',
     itContact: '',
     billingContact: '',
+    crmEmail: '',
     crmProvider: '',
     crmUsername: '',
     crmPassword: '',
-    creditCardType: '',
-    creditCardNumber: '',
-    expirationDate: '',
-    cvvCode: '',
     cardholderName: '',
     cardholderAddress: '',
     cardholderCity: '',
     cardholderState: '',
     cardholderZip: '',
+    creditCardType: '',
+    creditCardNumber: '',
+    expirationDate: '',
+    cvvCode: '',
     signature: '',
     date: '',
   });
+
+  // Handle input change
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  // Handle form submission
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // Here you can use the formValues object to send the data to your API or server
+
+    const { data, error } = await supabase()
+      .from('spm_onboarding_form_new') // Replace with your table name
+      .insert([{ ...formValues }]);
+
+    if (error) {
+      console.error('There was an error inserting', data);
+    } else {
+      console.log('Inserted data', data);
+    }
+  };
 
   return (
     <div className='min-h-screen bg-gray-100 flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8'>
@@ -46,7 +70,7 @@ const OnboardingForm: NextPage = () => {
             </p>
           </div>
           <div className='border-t border-gray-200'>
-            <form className='px-4 py-5 sm:p-6'>
+            <form onSubmit={handleSubmit} className='px-4 py-5 sm:p-6'>
               {/* Dealer Information */}
               <div className='grid grid-cols-6 gap-6'>
                 {/* Dealer Name */}
@@ -59,10 +83,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='dealer-name'
+                    name='dealerName'
                     id='dealer-name'
                     autoComplete='organization'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.dealerName}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -76,10 +102,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='dealer-address'
+                    name='dealerAddress'
                     id='dealer-address'
                     autoComplete='street-address'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.dealerAddress}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -97,6 +125,8 @@ const OnboardingForm: NextPage = () => {
                     id='city'
                     autoComplete='address-level2'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.city}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-2'>
@@ -112,6 +142,8 @@ const OnboardingForm: NextPage = () => {
                     id='state'
                     autoComplete='address-level1'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.state}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-2'>
@@ -127,6 +159,8 @@ const OnboardingForm: NextPage = () => {
                     id='zip'
                     autoComplete='postal-code'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.zip}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -140,10 +174,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='tel'
-                    name='dealer-phone'
+                    name='dealerPhone'
                     id='dealer-phone'
                     autoComplete='tel'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.dealerPhone}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-3'>
@@ -155,10 +191,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='url'
-                    name='dealer-website'
+                    name='dealerWebsite'
                     id='dealer-website'
                     autoComplete='url'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.dealerWebsite}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -172,10 +210,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='preferred-offer'
+                    name='preferredOffer'
                     id='preferred-offer'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
                     placeholder='$500 off is the recommended start'
+                    value={formValues.preferredOffer}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -189,10 +229,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='ip-address'
+                    name='ipAddress'
                     id='ip-address'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
                     placeholder='Google: What is my ip?'
+                    value={formValues.ipAddress}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -206,9 +248,11 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='website-company-contact'
+                    name='websiteCompanyContact'
                     id='website-company-contact'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.websiteCompanyContact}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -222,9 +266,11 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='it-contact'
+                    name='itContact'
                     id='it-contact'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.itContact}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -238,9 +284,11 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='billing-contact'
+                    name='billingContact'
                     id='billing-contact'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.billingContact}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -254,10 +302,12 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='email'
-                    name='crm-email'
+                    name='crmEmail'
                     id='crm-email'
                     autoComplete='email'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.crmEmail}
+                    onChange={handleChange}
                   />
                 </div>
 
@@ -271,9 +321,11 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='crm-provider'
+                    name='crmProvider'
                     id='crm-provider'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.crmProvider}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-2'>
@@ -285,9 +337,11 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='text'
-                    name='crm-username'
+                    name='crmUsername'
                     id='crm-username'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.crmUsername}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className='col-span-6 sm:col-span-2'>
@@ -299,9 +353,11 @@ const OnboardingForm: NextPage = () => {
                   </label>
                   <input
                     type='password'
-                    name='crm-password'
+                    name='crmPassword'
                     id='crm-password'
                     className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    value={formValues.crmPassword}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -322,9 +378,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='cardholder-name'
+                      name='cardholderName'
                       id='cardholder-name'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.cardholderName}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -338,9 +396,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='cardholder-address'
+                      name='cardholderAddress'
                       id='cardholder-address'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.cardholderAddress}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -354,9 +414,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='cardholder-city'
+                      name='cardholderCity'
                       id='cardholder-city'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.cardholderCity}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -368,9 +430,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='cardholder-state'
+                      name='cardholderState'
                       id='cardholder-state'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.cardholderState}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -382,9 +446,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='cardholder-zip'
+                      name='cardholderZip'
                       id='cardholder-zip'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.cardholderZip}
+                      onChange={handleChange}
                     />
                   </div>
 
@@ -398,9 +464,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='credit-card-type'
+                      name='creditCardType'
                       id='credit-card-type'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.creditCardType}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-3'>
@@ -412,9 +480,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='credit-card-number'
+                      name='creditCardNumber'
                       id='credit-card-number'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.creditCardNumber}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -426,9 +496,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='expiration-date'
+                      name='expirationDate'
                       id='expiration-date'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.expirationDate}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className='col-span-6 sm:col-span-2'>
@@ -440,9 +512,11 @@ const OnboardingForm: NextPage = () => {
                     </label>
                     <input
                       type='text'
-                      name='cvv-code'
+                      name='cvvCode'
                       id='cvv-code'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.cvvCode}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
@@ -463,6 +537,8 @@ const OnboardingForm: NextPage = () => {
                       name='signature'
                       id='signature'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2'
+                      value={formValues.signature}
+                      onChange={handleChange}
                     />
                   </div>
                   <div className='w-full'>
@@ -477,6 +553,8 @@ const OnboardingForm: NextPage = () => {
                       name='date'
                       id='date'
                       className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      value={formValues.date}
+                      onChange={handleChange}
                     />
                   </div>
                 </div>
