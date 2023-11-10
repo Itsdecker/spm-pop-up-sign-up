@@ -36,13 +36,13 @@ const OnboardingForm: NextPage = () => {
   });
 
   // Handle input change
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
 
   // Handle form submission
-  const handleSubmit = async (event) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
     // Here you can use the formValues object to send the data to your API or server
 
