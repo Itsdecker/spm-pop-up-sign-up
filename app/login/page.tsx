@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { headers, cookies } from 'next/headers'
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
+import SpmLogo from '@/components/SpmLogo';
 
 export default function Login({
   searchParams,
@@ -54,8 +55,8 @@ export default function Login({
 
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-
-
+      {/* Inserting the SpmLogo Component */}
+      <SpmLogo />
 
       <form
         className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
@@ -95,6 +96,6 @@ export default function Login({
           </p>
         )}
       </form>
-    </div >
-  )
+    </div>
+  );
 }
