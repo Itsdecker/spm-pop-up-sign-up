@@ -3,8 +3,6 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 import AuthButton from '../components/AuthButton';
 import OnboardingForm from './onboarding_form/page';
-import SpmLogo from '../components/SpmLogo';
-
 
 export default async function Index() {
   const cookieStore = cookies();
@@ -35,17 +33,12 @@ async function AuthenticationWrapper() {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return (
-    <div className='w-full flex flex-col items-center relative min-h-screen'>
-      <div className="absolute top-0 right-0">
-        <AuthButton />
-      </div>
-      <div className="my-4">
-        <SpmLogo />
-      </div>
-      <div className="w-full max-w-4xl px-4">
-        <OnboardingForm />
-      </div>
+  return user ? (
+    <div className='w-full'>
+      <AuthButton />
+      <OnboardingForm />
     </div>
+  ) : (
+    redirect('/login')
   );
 }
