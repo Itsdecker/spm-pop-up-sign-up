@@ -54,12 +54,13 @@ export default function Login({
   }
 
   return (
-    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2">
-      {/* Inserting the SpmLogo Component */}
-      <SpmLogo />
+    <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2 pt-8">
+      <div className="md:ml-[-120px]">
+        <SpmLogo />
+      </div>
 
       <form
-        className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground"
+        className="animate-in flex-1 flex flex-col w-full justify-center text-foreground mt-[-20px]" // Added negative top margin to the form
         action={signIn}
       >
         <label className="text-md" htmlFor="email">
@@ -81,7 +82,7 @@ export default function Login({
           placeholder="password"
           required
         />
-        <button className="bg-green-700 rounded-md px-4 py-2 text-foreground mb-2">
+        <button className="bg-yellow-400 rounded-md px-4 py-2 text-foreground mb-2">
           Sign In
         </button>
         <button

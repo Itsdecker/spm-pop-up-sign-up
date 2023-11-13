@@ -4,6 +4,7 @@ import { supabase } from '@/utils/supabase/client';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import SpmLogo from '@/components/SpmLogo';
 
 const OnboardingForm: NextPage = () => {
   const [formValues, setFormValues] = useState({
@@ -60,12 +61,20 @@ const OnboardingForm: NextPage = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gray-100 flex items-center justify-center py-4 px-4 sm:px-6 lg:px-8'>
+    <div className='min-h-screen bg-gray-100 flex flex-col items-center justify-center py-4 px-4 sm:px-6 lg:px-8'>
+      {/* Centering the logo and slightly moving it to the left */}
+      <div className="mb-8 w-full flex justify-center">
+        <div style={{ maxWidth: '500px', width: '100%', marginLeft: '-30px' }}> {/* Adjust marginLeft to move logo slightly to the left */}
+          <SpmLogo />
+        </div>
+      </div>
+
       <div className='max-w-full w-full space-y-8'>
-        <div className='bg-white shadow rounded-lg'>
+        {/* Adjust the rounding here */}
+        <div className='bg-white shadow rounded-md'> {/* For moderate rounding */}
           <div className='px-4 py-5 sm:px-6 bg-gray-50'>
             <h3 className='text-lg leading-6 font-medium text-gray-900'>
-              SPM Onboarding Form
+              SPM Pop-Up Registration
             </h3>
             <p className='mt-1 max-w-2xl text-sm text-gray-500'>
               Please fill in the details below.
