@@ -1,10 +1,12 @@
 'use client';
 
+import SpmLogo from '@/components/SpmLogo';
 import { supabase } from '@/utils/supabase/client';
 import { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import SpmLogo from '@/components/SpmLogo';
+
+import states from '@/states.json';
 
 const OnboardingForm: NextPage = () => {
   const [formValues, setFormValues] = useState({
@@ -88,7 +90,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='dealer-name'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Dealer Name
                   </label>
@@ -97,7 +99,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerName'
                     id='dealer-name'
                     autoComplete='organization'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.dealerName}
                     onChange={handleChange}
                   />
@@ -107,7 +109,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6'>
                   <label
                     htmlFor='dealer-address'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Dealer Address
                   </label>
@@ -116,7 +118,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerAddress'
                     id='dealer-address'
                     autoComplete='street-address'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.dealerAddress}
                     onChange={handleChange}
                   />
@@ -126,7 +128,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='city'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     City
                   </label>
@@ -135,7 +137,7 @@ const OnboardingForm: NextPage = () => {
                     name='city'
                     id='city'
                     autoComplete='address-level2'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.city}
                     onChange={handleChange}
                   />
@@ -143,24 +145,21 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='state'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     State
                   </label>
-                  <input
-                    type='text'
-                    name='state'
-                    id='state'
-                    autoComplete='address-level1'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+                  <select
                     value={formValues.state}
                     onChange={handleChange}
-                  />
+                  >
+                    {states.map((state) => <option>{state.name}</option>)}
+                  </select>
                 </div>
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='zip'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Zip
                   </label>
@@ -169,7 +168,7 @@ const OnboardingForm: NextPage = () => {
                     name='zip'
                     id='zip'
                     autoComplete='postal-code'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.zip}
                     onChange={handleChange}
                   />
@@ -179,7 +178,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='dealer-phone'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Dealer Phone
                   </label>
@@ -188,7 +187,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerPhone'
                     id='dealer-phone'
                     autoComplete='tel'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.dealerPhone}
                     onChange={handleChange}
                   />
@@ -196,7 +195,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='dealer-website'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Dealer Website
                   </label>
@@ -205,7 +204,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerWebsite'
                     id='dealer-website'
                     autoComplete='url'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.dealerWebsite}
                     onChange={handleChange}
                   />
@@ -215,7 +214,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6'>
                   <label
                     htmlFor='preferred-offer'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Preferred Offer
                   </label>
@@ -223,7 +222,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='preferredOffer'
                     id='preferred-offer'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     placeholder='$500 off is the recommended start'
                     value={formValues.preferredOffer}
                     onChange={handleChange}
@@ -234,7 +233,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6'>
                   <label
                     htmlFor='ip-address'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     IP Address at the dealership
                   </label>
@@ -242,7 +241,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='ipAddress'
                     id='ip-address'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     placeholder='Google: What is my ip?'
                     value={formValues.ipAddress}
                     onChange={handleChange}
@@ -253,7 +252,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='website-company-contact'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Website Company Contact
                   </label>
@@ -261,7 +260,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='websiteCompanyContact'
                     id='website-company-contact'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.websiteCompanyContact}
                     onChange={handleChange}
                   />
@@ -271,7 +270,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-3'>
                   <label
                     htmlFor='it-contact'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     IT Contact at the Dealership
                   </label>
@@ -279,7 +278,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='itContact'
                     id='it-contact'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.itContact}
                     onChange={handleChange}
                   />
@@ -289,7 +288,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6'>
                   <label
                     htmlFor='billing-contact'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Billing Contact at the Dealership
                   </label>
@@ -297,7 +296,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='billingContact'
                     id='billing-contact'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.billingContact}
                     onChange={handleChange}
                   />
@@ -307,7 +306,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6'>
                   <label
                     htmlFor='crm-email'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     CRM Lead Routing E-mail Address
                   </label>
@@ -316,7 +315,7 @@ const OnboardingForm: NextPage = () => {
                     name='crmEmail'
                     id='crm-email'
                     autoComplete='email'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.crmEmail}
                     onChange={handleChange}
                   />
@@ -326,7 +325,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='crm-provider'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     CRM Provider
                   </label>
@@ -334,7 +333,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='crmProvider'
                     id='crm-provider'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.crmProvider}
                     onChange={handleChange}
                   />
@@ -342,7 +341,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='crm-username'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Username
                   </label>
@@ -350,7 +349,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='crmUsername'
                     id='crm-username'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.crmUsername}
                     onChange={handleChange}
                   />
@@ -358,7 +357,7 @@ const OnboardingForm: NextPage = () => {
                 <div className='col-span-6 sm:col-span-2'>
                   <label
                     htmlFor='crm-password'
-                    className='block text-sm font-medium text-gray-700'
+
                   >
                     Password
                   </label>
@@ -366,7 +365,7 @@ const OnboardingForm: NextPage = () => {
                     type='password'
                     name='crmPassword'
                     id='crm-password'
-                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                     value={formValues.crmPassword}
                     onChange={handleChange}
                   />
@@ -383,7 +382,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-3'>
                     <label
                       htmlFor='cardholder-name'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Cardholder Name
                     </label>
@@ -391,7 +390,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderName'
                       id='cardholder-name'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.cardholderName}
                       onChange={handleChange}
                     />
@@ -401,7 +400,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6'>
                     <label
                       htmlFor='cardholder-address'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Cardholder Address
                     </label>
@@ -409,7 +408,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderAddress'
                       id='cardholder-address'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.cardholderAddress}
                       onChange={handleChange}
                     />
@@ -419,7 +418,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-2'>
                     <label
                       htmlFor='cardholder-city'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       City
                     </label>
@@ -427,7 +426,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderCity'
                       id='cardholder-city'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.cardholderCity}
                       onChange={handleChange}
                     />
@@ -435,7 +434,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-2'>
                     <label
                       htmlFor='cardholder-state'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       State
                     </label>
@@ -443,7 +442,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderState'
                       id='cardholder-state'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.cardholderState}
                       onChange={handleChange}
                     />
@@ -451,7 +450,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-2'>
                     <label
                       htmlFor='cardholder-zip'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Zip
                     </label>
@@ -459,7 +458,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderZip'
                       id='cardholder-zip'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.cardholderZip}
                       onChange={handleChange}
                     />
@@ -469,7 +468,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-3'>
                     <label
                       htmlFor='credit-card-type'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Credit Card Type
                     </label>
@@ -477,7 +476,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='creditCardType'
                       id='credit-card-type'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.creditCardType}
                       onChange={handleChange}
                     />
@@ -485,7 +484,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-3'>
                     <label
                       htmlFor='credit-card-number'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Credit Card Number
                     </label>
@@ -493,7 +492,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='creditCardNumber'
                       id='credit-card-number'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.creditCardNumber}
                       onChange={handleChange}
                     />
@@ -501,7 +500,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-2'>
                     <label
                       htmlFor='expiration-date'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Expiration Date
                     </label>
@@ -509,7 +508,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='expirationDate'
                       id='expiration-date'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.expirationDate}
                       onChange={handleChange}
                     />
@@ -517,7 +516,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='col-span-6 sm:col-span-2'>
                     <label
                       htmlFor='cvv-code'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       CVV Code
                     </label>
@@ -525,7 +524,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cvvCode'
                       id='cvv-code'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.cvvCode}
                       onChange={handleChange}
                     />
@@ -539,7 +538,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='w-full'>
                     <label
                       htmlFor='signature'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Signature/Digital Signature
                     </label>
@@ -555,7 +554,7 @@ const OnboardingForm: NextPage = () => {
                   <div className='w-full'>
                     <label
                       htmlFor='date'
-                      className='block text-sm font-medium text-gray-700'
+
                     >
                       Date
                     </label>
@@ -563,7 +562,7 @@ const OnboardingForm: NextPage = () => {
                       type='date'
                       name='date'
                       id='date'
-                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
+
                       value={formValues.date}
                       onChange={handleChange}
                     />
