@@ -61,22 +61,22 @@ const OnboardingForm: NextPage = () => {
   };
 
   return (
-    <div className='min-h-screen bg-gray-100 flex flex-col items-center justify-center py-4 px-4 sm:px-6 lg:px-8'>
+    <div className='flex flex-col items-center justify-center min-h-screen px-4 py-4 bg-gray-100 sm:px-6 lg:px-8'>
       {/* Centering the logo and slightly moving it to the left */}
-      <div className="mb-8 w-full flex justify-center">
+      <div className="flex justify-center w-full mb-8">
         <div style={{ maxWidth: '500px', width: '100%', marginLeft: '-30px' }}> {/* Adjust marginLeft to move logo slightly to the left */}
           <SpmLogo />
         </div>
       </div>
 
-      <div className='max-w-full w-full space-y-8'>
+      <div className='w-full max-w-full space-y-8'>
         {/* Adjust the rounding here */}
-        <div className='bg-white shadow rounded-md'> {/* For moderate rounding */}
+        <div className='bg-white rounded-md shadow'> {/* For moderate rounding */}
           <div className='px-4 py-5 sm:px-6 bg-gray-50'>
-            <h3 className='text-lg leading-6 font-medium text-gray-900'>
+            <h3 className='text-lg font-medium leading-6 text-gray-900'>
               SPM Pop-Up Registration
             </h3>
-            <p className='mt-1 max-w-2xl text-sm text-gray-500'>
+            <p className='max-w-2xl mt-1 text-sm text-gray-500'>
               Please fill in the details below.
             </p>
           </div>
@@ -97,7 +97,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerName'
                     id='dealer-name'
                     autoComplete='organization'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.dealerName}
                     onChange={handleChange}
                   />
@@ -116,7 +116,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerAddress'
                     id='dealer-address'
                     autoComplete='street-address'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.dealerAddress}
                     onChange={handleChange}
                   />
@@ -135,7 +135,7 @@ const OnboardingForm: NextPage = () => {
                     name='city'
                     id='city'
                     autoComplete='address-level2'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.city}
                     onChange={handleChange}
                   />
@@ -152,7 +152,7 @@ const OnboardingForm: NextPage = () => {
                     name='state'
                     id='state'
                     autoComplete='address-level1'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.state}
                     onChange={handleChange}
                   />
@@ -169,7 +169,7 @@ const OnboardingForm: NextPage = () => {
                     name='zip'
                     id='zip'
                     autoComplete='postal-code'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.zip}
                     onChange={handleChange}
                   />
@@ -188,7 +188,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerPhone'
                     id='dealer-phone'
                     autoComplete='tel'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.dealerPhone}
                     onChange={handleChange}
                   />
@@ -205,7 +205,7 @@ const OnboardingForm: NextPage = () => {
                     name='dealerWebsite'
                     id='dealer-website'
                     autoComplete='url'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.dealerWebsite}
                     onChange={handleChange}
                   />
@@ -223,7 +223,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='preferredOffer'
                     id='preferred-offer'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     placeholder='$500 off is the recommended start'
                     value={formValues.preferredOffer}
                     onChange={handleChange}
@@ -242,7 +242,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='ipAddress'
                     id='ip-address'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     placeholder='Google: What is my ip?'
                     value={formValues.ipAddress}
                     onChange={handleChange}
@@ -261,7 +261,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='websiteCompanyContact'
                     id='website-company-contact'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.websiteCompanyContact}
                     onChange={handleChange}
                   />
@@ -279,7 +279,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='itContact'
                     id='it-contact'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.itContact}
                     onChange={handleChange}
                   />
@@ -297,7 +297,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='billingContact'
                     id='billing-contact'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.billingContact}
                     onChange={handleChange}
                   />
@@ -316,7 +316,7 @@ const OnboardingForm: NextPage = () => {
                     name='crmEmail'
                     id='crm-email'
                     autoComplete='email'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.crmEmail}
                     onChange={handleChange}
                   />
@@ -334,7 +334,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='crmProvider'
                     id='crm-provider'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.crmProvider}
                     onChange={handleChange}
                   />
@@ -350,7 +350,7 @@ const OnboardingForm: NextPage = () => {
                     type='text'
                     name='crmUsername'
                     id='crm-username'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.crmUsername}
                     onChange={handleChange}
                   />
@@ -366,7 +366,7 @@ const OnboardingForm: NextPage = () => {
                     type='password'
                     name='crmPassword'
                     id='crm-password'
-                    className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                    className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                     value={formValues.crmPassword}
                     onChange={handleChange}
                   />
@@ -374,7 +374,7 @@ const OnboardingForm: NextPage = () => {
               </div>
 
               {/* Credit Card Authorization */}
-              <div className='mt-6 border-t border-gray-200 pt-6'>
+              <div className='pt-6 mt-6 border-t border-gray-200'>
                 <h4 className='text-lg font-medium text-gray-900'>
                   Credit Card Authorization
                 </h4>
@@ -391,7 +391,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderName'
                       id='cardholder-name'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.cardholderName}
                       onChange={handleChange}
                     />
@@ -409,7 +409,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderAddress'
                       id='cardholder-address'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.cardholderAddress}
                       onChange={handleChange}
                     />
@@ -427,7 +427,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderCity'
                       id='cardholder-city'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.cardholderCity}
                       onChange={handleChange}
                     />
@@ -443,7 +443,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderState'
                       id='cardholder-state'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.cardholderState}
                       onChange={handleChange}
                     />
@@ -459,7 +459,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cardholderZip'
                       id='cardholder-zip'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.cardholderZip}
                       onChange={handleChange}
                     />
@@ -477,7 +477,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='creditCardType'
                       id='credit-card-type'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.creditCardType}
                       onChange={handleChange}
                     />
@@ -493,7 +493,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='creditCardNumber'
                       id='credit-card-number'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.creditCardNumber}
                       onChange={handleChange}
                     />
@@ -509,7 +509,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='expirationDate'
                       id='expiration-date'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.expirationDate}
                       onChange={handleChange}
                     />
@@ -525,7 +525,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='cvvCode'
                       id='cvv-code'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.cvvCode}
                       onChange={handleChange}
                     />
@@ -534,7 +534,7 @@ const OnboardingForm: NextPage = () => {
               </div>
 
               {/* Signature and Date */}
-              <div className='mt-6 border-t border-gray-200 pt-6'>
+              <div className='pt-6 mt-6 border-t border-gray-200'>
                 <div className='flex justify-between gap-4'>
                   <div className='w-full'>
                     <label
@@ -547,7 +547,7 @@ const OnboardingForm: NextPage = () => {
                       type='text'
                       name='signature'
                       id='signature'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2'
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm'
                       value={formValues.signature}
                       onChange={handleChange}
                     />
@@ -563,7 +563,7 @@ const OnboardingForm: NextPage = () => {
                       type='date'
                       name='date'
                       id='date'
-                      className='mt-1 block w-full shadow-sm sm:text-sm border-gray-300 bg-gray-200 p-2 '
+                      className='block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm '
                       value={formValues.date}
                       onChange={handleChange}
                     />
@@ -574,7 +574,7 @@ const OnboardingForm: NextPage = () => {
               <div className='px-4 py-3 text-right sm:px-6'>
                 <button
                   type='submit'
-                  className='inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-gray-800 bg-yellow-400 hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
+                  className='inline-flex justify-center px-4 py-2 text-sm font-medium text-gray-800 bg-yellow-400 border border-transparent rounded-md shadow-sm hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500'
                 >
                   Submit
                 </button>
