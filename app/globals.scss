@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+input[type="date"],
+input[type="password"],
+input[type="number"],
+input[type="text"] {
+  @apply block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm;
+}
