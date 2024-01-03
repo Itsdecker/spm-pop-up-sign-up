@@ -1,4 +1,4 @@
-import { GeistSans } from 'geist/font';
+import Header from '@/components/Header';
 import './globals.scss';
 
 const defaultUrl = process.env.VERCEL_URL
@@ -17,10 +17,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang='en' className={GeistSans.className}>
+    <html lang='en'>
       <body className='bg-background text-foreground'>
-        <main className='flex flex-col items-center min-h-screen'>
-          {children}
+        <Header />
+        <main className='min-h-screen bg-neutral-50'>
+          <div className="container py-6 mx-auto">
+            {children}
+          </div>
         </main>
       </body>
     </html>

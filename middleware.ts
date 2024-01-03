@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 export async function middleware(req: NextRequest) {
   const res = NextResponse.next();
 
-  const allowedUrls = ['/onboarding'];
+  const allowedUrls = ['/', '/prices', '/onboarding'];
 
   if (allowedUrls.includes(req.nextUrl.pathname)) { // req.nextUrl.pathname = current URL asked
     return res // I stop and I enter the page

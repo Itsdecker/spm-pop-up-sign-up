@@ -7,8 +7,23 @@ label {
 }
 
 input[type="date"],
-input[type="password"],
 input[type="number"],
 input[type="text"] {
   @apply block w-full p-2 mt-1 bg-gray-200 border-gray-300 shadow-sm sm:text-sm;
+}
+
+button {
+  @apply font-semibold cursor-pointer transition rounded-xl px-6 py-2 hover:scale-105;
+
+  &.primary {
+    @apply bg-yellow-400 hover:bg-yellow-300;
+  }
+
+  &.secondary {
+    @apply bg-amber-500 hover:bg-amber-400;
+  }
+}
+
+.link {
+  @apply font-semibold cursor-pointer hover:text-yellow-500 transition;
 }

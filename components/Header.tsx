@@ -1,44 +1,20 @@
-import NextLogo from './NextLogo'
-import SupabaseLogo from './SupabaseLogo'
+"use client";
+
+import Image from "next/image";
+
+import SpmLogo from '@/public/spm-logo.png';
+import { useRouter } from "next/navigation";
 
 export default function Header() {
-  return (
-    <div className="flex flex-col gap-16 items-center">
-      <div className="flex gap-8 justify-center items-center">
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          rel="noreferrer"
-        >
-          <SupabaseLogo />
-        </a>
-        <span className="border-l rotate-45 h-6" />
-        <a href="https://nextjs.org/" target="_blank" rel="noreferrer">
-          <NextLogo />
-        </a>
-      </div>
-      <h1 className="sr-only">Supabase and Next.js Starter Template</h1>
-      <p className="text-3xl lg:text-4xl !leading-tight mx-auto max-w-xl text-center">
-        The fastest way to build apps with{' '}
-        <a
-          href="https://supabase.com/?utm_source=create-next-app&utm_medium=template&utm_term=nextjs"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Supabase
-        </a>{' '}
-        and{' '}
-        <a
-          href="https://nextjs.org/"
-          target="_blank"
-          className="font-bold hover:underline"
-          rel="noreferrer"
-        >
-          Next.js
-        </a>
-      </p>
-      <div className="w-full p-[1px] bg-gradient-to-r from-transparent via-foreground/10 to-transparent my-8" />
+  const router = useRouter();
+
+  return <div className='flex items-center justify-between w-full gap-4 px-6 py-4 overflow-hidden border-b shadow-md'>
+    <div className="w-[200px] cursor-pointer" onClick={() => router.push('/')}>
+      <Image alt="Star Performance" src={SpmLogo} layout="responsive" width={200} height={100} />
     </div>
-  )
+    <div className="grow">
+      <p className="link" onClick={() => router.push('/prices')}>Prices</p>
+    </div>
+    <button className="primary" onClick={() => router.push('/login')}>Login</button>
+  </div>
 }
